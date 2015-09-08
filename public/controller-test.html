@@ -6,6 +6,52 @@
 
 </head>
 <body>
+    <div id="MyApp" ng-controller="CartController">
+        
+        <div id="AddItem">
+             <h3>Add Item</h3>
+
+            <input value="" type="text" placeholder="Name of Item" ng-model="itemName">
+            <input value="1" type="number" placeholder="Quantity" ng-model="itemAmount">
+            <br/>
+            <button ng-click="addItem()">Add to list</button>
+        </div>
+        <!-- begin: LIST OF CHECKED ITEMS -->
+        <div id="CheckedList">
+             <h3>Checked Items: {{getTotalCheckedItems()}}</h3>
+
+             <h4>Checked:</h4>
+
+            <table>
+                <tr ng-repeat="item in checked" class="item-checked">
+                    <td><b>amount:</b> {{item.amount}} -</td>
+                    <td><b>name:</b> {{item.name}} -</td>
+                    <td> <i>this item is checked!</i>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- end: LIST OF CHECKED ITEMS -->
+        <!-- begin: LIST OF UNCHECKED ITEMS -->
+        <div id="UncheckedList">
+             <h3>Unchecked Items: {{getTotalItems()}}</h3>
+
+             <h4>Unchecked:</h4>
+
+            <table>
+                <tr ng-repeat="item in items" class="item-unchecked">
+                    <td><b>name:</b> {{item.name}} -</td>
+                    <td><b>amount:</b> {{item.amount}} -</td>
+                    <td>
+                        <button ng-click="toggleChecked($index)">check item</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- end: LIST OF ITEMS -->
+        </div>
+
     <script type="text/javascript" src="/js/angular.min.js"></script>
     <script type="text/javascript" src="/js/controllerTest.js"></script>
 </body>
